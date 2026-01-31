@@ -21,8 +21,13 @@ public class AbstractComponent {
     WebElement cartHeader;
 
     public void waitForElementToAppear(By FindBy) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(FindBy));
+    }
+
+    public void waitForWebElementToAppear(WebElement FindBy) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(FindBy));
     }
 
     public CartPage goToCartPage() {
