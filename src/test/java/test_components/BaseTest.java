@@ -3,6 +3,7 @@ package test_components;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import projectobjects.LandingPage;
@@ -27,7 +28,11 @@ public class BaseTest {
 
         if(browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            //To set the zoom level in chromedriver as 90%
+            options.addArguments("--force-device-scale-factor=0.8");
+            options.addArguments("--high-dpi-support=1");
+            driver = new ChromeDriver(options);
 
         } else if (browserName.equalsIgnoreCase("firefox")) {
             //firefox
