@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite parallel="tests" name="All Test Suite">
+    <groups>
+        <run>
+            <include name = "ErrorHandling"/>
+        </run>
+    </groups>
     <test verbose="5" preserve-order="true" name="Submit Order Test">
         <classes>
             <class name="cart_exercise_tests.SubmitOrderTest"/>

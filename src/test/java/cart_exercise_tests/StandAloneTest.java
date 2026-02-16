@@ -29,7 +29,7 @@ public class StandAloneTest {
         //create an object from LandingPage class
         LandingPage landingPage = new LandingPage(driver);
         driver.findElement(By.id("userEmail")).sendKeys("laurawebsa@gmail.com");
-        driver.findElement(By.id("userPassword")).sendKeys("L@uris1608");
+        driver.findElement(By.id("userPassword")).sendKeys("Tomodachi1");
         driver.findElement(By.id("login")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(12));

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ErrorValidationTest extends BaseTest {
 
-        @Test
+        @Test(groups = {"ErrorHandling"})
         public void loginErrorValidation() throws IOException, InterruptedException {
             String productName = "ZARA COAT 3";
             landingPage.loginApplication("laurawebsa@gmail.com", "L*uris1608");
