@@ -1,5 +1,8 @@
 package cart_exercise_tests;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.DataProvider;
 import projectobjects.OrderPage;
 import test_components.BaseTest;
@@ -12,6 +15,7 @@ import projectobjects.ConfirmationPage;
 import projectobjects.ProductCatalog;
 
 import javax.xml.crypto.Data;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -49,9 +53,16 @@ public class SubmitOrderTest  extends BaseTest {
         OrderPage ordersPage = productCatalog.goToOrdersPage();
         Assert.assertTrue(ordersPage.verifyOrderDisplay(productName));
     }
+
+
     @DataProvider
-    public Object[][] getData(){
-            Map<String,String > map = new HashMap<>();
+    public Object[][] getData() throws IOException {
+
+        List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir") +
+                "//src//test//java//data//PurchaseOrder.json");
+            return new Object[][] {{data.get(0)},{data.get(1)}};
+
+                       /*Map<String,String > map = new HashMap<>();
             map.put("email", "laurawebsa@gmail.com");
             map.put("password", "Tomodachi1");
             map.put("product", "ZARA COAT 3");
@@ -59,8 +70,6 @@ public class SubmitOrderTest  extends BaseTest {
             Map<String,String > map1 = new HashMap<>();
             map1.put("email", "laya89@hotmail.com");
             map1.put("password", "Tomodachi1");
-            map1.put("product", "iphone 13 pro");
-
-            return new Object[][] {{map},{map1}};
+            map1.put("product", "iphone 13 pro");*/
     }
 }

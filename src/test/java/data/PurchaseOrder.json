@@ -1,13 +1,12 @@
 [
   {
-
-
+   "email" : "laurawebsa@gmail.com",
+   "password" : "Tomodachi1",
+   "product"  : "ZARA COAT 3"
   },
-
   {
-
-
+    "email" : "laya89@hotmail.com",
+    "password" : "Tomodachi1",
+    "product"  : "iphone 13 pro"
   }
-
-
 ]

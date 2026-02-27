@@ -6,17 +6,18 @@ import org.testng.annotations.Test;
 import projectobjects.CartPage;
 import projectobjects.ProductCatalog;
 import test_components.BaseTest;
+import test_components.Retry;
 
 import java.io.IOException;
 import java.util.List;
 
 public class ErrorValidationTest extends BaseTest {
 
-        @Test(groups = {"ErrorHandling"})
+        @Test(groups = {"ErrorHandling"},retryAnalyzer = Retry.class)
         public void loginErrorValidation() throws IOException, InterruptedException {
             String productName = "ZARA COAT 3";
             landingPage.loginApplication("laurawebsa@gmail.com", "L*uris1608");
-            Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
+            Assert.assertEquals(landingPage.getErrorMessage(), "Incorrect email or password.");
 
         }
 

@@ -21,13 +21,13 @@ public class CartPage extends AbstractComponent {
     public CartPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
+        this.cartProducts = cartProducts;
         PageFactory.initElements(driver, this);
     }
 
     public Boolean verifyProductDisplay(String productName) {
-        Boolean match = cartProducts.stream().anyMatch(product -> product.getText().
+        return cartProducts.stream().anyMatch(product -> product.getText().
                 equalsIgnoreCase(productName));
-        return match;
     }
 
     public CheckoutPage goToCheckout() {
