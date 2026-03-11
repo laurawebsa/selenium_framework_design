@@ -12,8 +12,8 @@ import java.util.List;
 public class OrderPage extends AbstractComponent {
     WebDriver driver;
 
-    @FindBy(css = ".totalRow button")
-    WebElement checkoutEle;
+    //@FindBy(css = ".totalRow button")
+    //WebElement checkoutEle;
 
     @FindBy(css = "tr td:nth-child(3)")
     private List<WebElement> productNames;
@@ -25,9 +25,11 @@ public class OrderPage extends AbstractComponent {
     }
 
     public Boolean verifyOrderDisplay(String productName) {
-        Boolean match = productNames.stream().anyMatch(product -> product.getText().
+        /*Boolean match = productNames.stream().anyMatch(product -> product.getText().
                 equalsIgnoreCase(productName));
-        return match;
+        return match; */
+        return productNames.stream().anyMatch(product -> product.getText().
+                equalsIgnoreCase(productName));
     }
 
 }

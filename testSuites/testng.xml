@@ -5,12 +5,12 @@
     <listeners>
         <listener class-name="test_components.Listeners"/>
     </listeners>
-    <test verbose="5" preserve-order="true" name="Submit Order Test">
+    <test thread-count="5" name="Submit Order Test">
         <classes>
             <class name="cart_exercise_tests.SubmitOrderTest"/>
         </classes>
     </test> <!-- Test -->
-    <test verbose="5" preserve-order="true" name="Error Validation Test">
+    <test thread-count="5"  name="Error Validation Test">
         <classes>
             <class name="cart_exercise_tests.ErrorValidationTest"/>
         </classes>

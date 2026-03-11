@@ -32,8 +32,11 @@ public class CartPage extends AbstractComponent {
 
     public CheckoutPage goToCheckout() {
         //checkoutEle.click();
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        /*JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", checkoutEle);
+        return new CheckoutPage(driver);*/
+        waitForElementToBeClickable(checkoutEle);
+        checkoutEle.click();
         return new CheckoutPage(driver);
     }
 }
