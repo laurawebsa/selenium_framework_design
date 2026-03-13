@@ -24,23 +24,26 @@ public class AbstractComponent {
     @FindBy(css = "[routerlink*='myorders']")
     WebElement orderHeader;
 
+    By spinnerLocator =  By.cssSelector(".ng-animating");
+
     public void waitForElementToAppear(By FindBy) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(FindBy));
     }
 
     public void waitForWebElementToAppear(WebElement FindBy) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(FindBy));
     }
 
     public void waitForElementToBeClickable(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public CartPage goToCartPage() {
-        waitForWebElementToAppear(cartHeader);
+        waitForElementToDisappear(spinnerLocator);
+        waitForElementToBeClickable(cartHeader);
         cartHeader.click();
         return new CartPage(driver);
 
@@ -54,7 +57,7 @@ public class AbstractComponent {
 
     public void waitForElementToDisappear(By elementLocator) {
         //Thread.sleep(1000);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elementLocator));
     }
 

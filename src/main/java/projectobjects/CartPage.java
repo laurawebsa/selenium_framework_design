@@ -21,7 +21,7 @@ public class CartPage extends AbstractComponent {
     public CartPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        this.cartProducts = cartProducts;
+        //this.cartProducts = cartProducts;
         PageFactory.initElements(driver, this);
     }
 
