@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/lauris/Documents/QA Automation Course/Grid_Upload_Download/target">
+        <groups>
+            <run>
+                <include name="changePrice"/>
+            </run>
+        </groups>
+        <classes>
+          <class name="testExecution.GridTest"></class>
+        </classes>
+    </test>
+</suite>
