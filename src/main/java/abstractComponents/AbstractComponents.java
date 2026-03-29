@@ -31,7 +31,7 @@ public class AbstractComponents {
 
     public void waitForFileToDownload(String path) throws RuntimeException {
         File file = new File(path);
-        int timeout = 10;
+        int timeout = 15;
         while(true){
             if(file.exists()){
                 return;
