@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/lauris/Documents/QA Automation Course/Framework_Ecommerce/src/test/java/">
+        <groups>
+            <run>
+                <exclude name="incorrectLogin"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="testExecution.PurchaseEndTest"></class>
+        </classes>
+    </test>
+</suite>

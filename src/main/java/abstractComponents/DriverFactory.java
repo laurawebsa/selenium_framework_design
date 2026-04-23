@@ -3,11 +3,15 @@ package abstractComponents;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.ConfigReader;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class DriverFactory {
@@ -18,7 +22,8 @@ public class DriverFactory {
         String driverName = reader.getBrowser();
         if(driverName.equalsIgnoreCase("chrome")){
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }else if(driverName.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();
@@ -26,7 +31,6 @@ public class DriverFactory {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
         driver.get(reader.getURL());
-        driver.get(Arrays.toString(reader.getUser()));
         return driver;
     }
 }

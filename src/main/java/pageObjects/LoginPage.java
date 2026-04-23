@@ -25,12 +25,14 @@ public class LoginPage  extends BasePage{
       WebElement loginButton;
 
       public void goTo(String url){
+
           driver.get(url);
       }
 
-      public void  userLogin(String username,String password) {
+      public ProductCatalog userLogin(String username, String password) {
           userName.sendKeys(username);
           userPassword.sendKeys(password);
           loginButton.click();
+          return new ProductCatalog(driver);
       }
 }
