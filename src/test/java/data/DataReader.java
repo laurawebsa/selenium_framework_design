@@ -19,7 +19,8 @@ public class DataReader {
 
     //String to HashMap with Jackson Datbind
     ObjectMapper mapper = new ObjectMapper();
-    List<HashMap<String,String>> data = mapper.readValue(jsonContent, new TypeReference<List<HashMap<String, String>>>() {
+    List<HashMap<String,String>> data = mapper.readValue(jsonContent,
+            new TypeReference<List<HashMap<String, String>>>() {
     });
     return data;
     }

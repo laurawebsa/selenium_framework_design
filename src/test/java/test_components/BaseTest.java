@@ -64,7 +64,7 @@ public class BaseTest {
         //Read JSON to string
         String jsonContent = FileUtils.readFileToString(new File(filePath));
 
-        //String to HashMap with Jackson Datbind
+        //String to HashMap with Jackson Databind
         ObjectMapper mapper = new ObjectMapper();
         List<HashMap<String,String>> data = mapper.readValue(jsonContent,
                 new TypeReference<List<HashMap<String, String>>>() {
