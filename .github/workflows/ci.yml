@@ -1,0 +1,77 @@
+name: Selenium Test Suite — CI
+ 
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  #schedule:
+    # Runs every day at 8 AM UTC (3 AM Colombia time)
+    #- cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'Maven profile to run'
+        required: true
+        default: 'Regression'
+        type: choice
+        options:
+          - Regression
+          - Purchase
+          - ErrorValidation
+          - CucumberTests
+ 
+jobs:
+  test:
+    name: Run Automated Tests
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # 1. Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # 2. Set up Java 21 (matches your pom.xml compiler settings)
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+ 
+      # 3. Install Google Chrome (required for Selenium UI tests)
+      - name: Install Google Chrome
+        uses: browser-actions/setup-chrome@v1
+ 
+      # 4. Run tests — default profile is Regression
+      #    For manual runs, uses the profile selected in workflow_dispatch
+      - name: Run tests with Maven
+        run: |
+          PROFILE="${{ github.event.inputs.profile || 'Regression' }}"
+          echo "Running Maven profile: $PROFILE"
+          mvn test -P"$PROFILE" \
+            -Dwebdriver.chrome.driver=$(which chromedriver) \
+            -Dheadless=true \
+            --no-transfer-progress
+        env:
+          CI: true
+ 
+      # 5. Upload ExtentReports HTML report as an artifact
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        if: always()   # Upload even if tests fail
+        with:
+          name: extent-report-${{ github.run_number }}
+          path: reports/
+          retention-days: 30
+ 
+      # 6. Publish test results summary in the GitHub Actions UI
+      - name: Publish test results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: TestNG Results
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: false
+ 
