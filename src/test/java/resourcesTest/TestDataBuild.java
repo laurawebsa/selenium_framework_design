@@ -1,22 +1,23 @@
-package resources;
+package resourcesTest;
 
 import BDD.pojo.AddPlace;
 import BDD.pojo.Location;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestDataBuild {
 
-    public AddPlace addPlacePayload(){
+    public AddPlace addPlacePayload(String name, String language, String address) throws IOException {
 
         AddPlace p = new AddPlace();
         p.setAccuracy(50);
-        p.setAddress("29, side layout, cohen 09");
-        p.setLanguage("French-IN");
+        p.setAddress(address);
+        p.setLanguage(language);
         p.setPhoneNumber("(+91) 983 893 3937");
         p.setWebsite("http://google.com");
-        p.setName("Frontline house");
+        p.setName(name);
         List<String> typeList=new ArrayList<String>();
         typeList.add("shoe park");
         typeList.add("shop");
@@ -25,8 +26,12 @@ public class TestDataBuild {
         p.setLocation(loc);
         loc.setLatitude(-38.383494);
         loc.setLongitude(33.427362);
-
         return p;
 
+    }
+
+    public String deletePlacePayload(String placeId) throws IOException {
+
+        return "{\r\n \"place_id\": \""+placeId+"\"\r\n}";
     }
 }
