@@ -1,7 +1,7 @@
 # 🧪API Rest Assured Framework for API Testing
 
 Automated API testing project for https://rahulshettyacademy.com practice
-using **API Rest**, **Java**, and **Json**, applying **Serialization and Deserialization** **APACHE POI**
+using **API Rest**, **Java**, and **Json**, applying **Serialization and Deserialization** **SpecBuild**
 and good automation practices.
 
 This project is part of my QA Automation portfolio.
