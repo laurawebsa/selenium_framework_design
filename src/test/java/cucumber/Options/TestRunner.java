@@ -10,7 +10,11 @@ import org.junit.platform.suite.api.*;
         value = "stepDefinitions")
 @ConfigurationParameter(
         key = "cucumber.plugin",
-        value = "pretty")
+        value = "pretty, json:target/JsonReports/cucumber-report.json, " +
+                "html:target/JsonReports/cucumber-report.html")
+@ConfigurationParameter(
+        key = "cucumber.filter.tags",
+        value = "@AddPlace")
 public class TestRunner {
 
 }
